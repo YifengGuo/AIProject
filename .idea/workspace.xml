@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9803bcdb-4bca-468c-a987-aa2fe1067ea4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/search_algorithm/SearchPathDFS2.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AIProject/maze_generation/GenerateRandomMaze.class" afterPath="$PROJECT_DIR$/out/production/AIProject/maze_generation/GenerateRandomMaze.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/maze_generation/GenerateRandomMaze.java" afterPath="$PROJECT_DIR$/src/maze_generation/GenerateRandomMaze.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/search_algorithm/SearchPathByDFS.java" afterPath="$PROJECT_DIR$/src/search_algorithm/SearchPathByDFS.java" />
     </list>
@@ -22,8 +19,8 @@
       <file leaf-file-name="GenerateRandomMaze.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/maze_generation/GenerateRandomMaze.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+            <state relative-caret-position="289">
+              <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -32,8 +29,8 @@
       <file leaf-file-name="SearchPathByDFS.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByDFS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="43" column="48" lean-forward="false" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+            <state relative-caret-position="306">
+              <caret line="113" column="31" lean-forward="false" selection-start-line="113" selection-start-column="31" selection-end-line="113" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,8 +59,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/search_algorithm/SearchPathDFS2.java" />
-        <option value="$PROJECT_DIR$/src/maze_generation/GenerateRandomMaze.java" />
         <option value="$PROJECT_DIR$/src/search_algorithm/SearchPathByDFS.java" />
+        <option value="$PROJECT_DIR$/src/maze_generation/GenerateRandomMaze.java" />
       </list>
     </option>
   </component>
@@ -664,12 +661,12 @@
       <updated>1505506334070</updated>
       <workItem from="1505506338609" duration="574000" />
       <workItem from="1505527095709" duration="3321000" />
-      <workItem from="1505530753271" duration="1812000" />
+      <workItem from="1505530753271" duration="1957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5707000" />
+    <option name="totallyTimeSpent" value="5852000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -797,16 +794,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/maze_generation/GenerateRandomMaze.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        <state relative-caret-position="289">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByDFS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="43" column="48" lean-forward="false" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+        <state relative-caret-position="306">
+          <caret line="113" column="31" lean-forward="false" selection-start-line="113" selection-start-column="31" selection-end-line="113" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

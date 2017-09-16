@@ -110,6 +110,9 @@ public class SearchPathByDFS {
             }
             System.out.println();
         }
+        if (res.isEmpty()) {
+            System.out.print("Fail to find the path.");
+        }
         for (Entry e : res) {
             System.out.print(e.toString() + " ");
         }
