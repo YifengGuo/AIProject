@@ -26,6 +26,30 @@ public class SearchPathByDFS {
         public String toString() {
             return "(" + x + "," + y + ")";
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == this) {
+                return true;
+            }
+            if (!(o instanceof Entry)) {
+                return false;
+            }
+            Entry e = (Entry) o;
+            return e.x == x
+                    && e.y == y
+                    && e.value == value;
+        }
+
+        // 17 and 31 are common prime number used in hashCode()
+        @Override
+        public int hashCode() {
+            int result = 17;
+            result = 31 * result + x;
+            result = 31 * result + y;
+            result = 31 * result + value;
+            return result;
+        }
     }
 
     public List<Entry> getPath(int[][] maze) {
@@ -39,9 +63,9 @@ public class SearchPathByDFS {
         Entry end = new Entry(maze.length - 1, maze.length - 1, 0);
         searchPath(stack, maze, visited, start, end);
         // push end to stack if it finds a path
-        if (!stack.isEmpty()) {
-            stack.offerFirst(end);
-        }
+//        if (!stack.isEmpty()) {
+//            stack.offerFirst(end);
+//        }
         // reverse order to get path from start to end
         Deque<Entry> path = reverseStack(stack);
         while (!path.isEmpty()) {
@@ -61,14 +85,14 @@ public class SearchPathByDFS {
     private void searchPath(Deque<Entry> stack, int[][] maze, boolean[][] visited, Entry start, Entry end) {
         stack.offerFirst(start);
         visited[start.x][start.y] = true;
-        while (!stack.isEmpty() && (stack.peekFirst().x != end.x && stack.peekFirst().y != end.y)) {
+        while (!stack.isEmpty() && (!stack.peekFirst().equals(end))) {
             Entry next = getAdjacentNotVisitedEntry(stack.peekFirst(), visited, maze);
             if (next.x != -1) {
-                stack.offerFirst(next);
                 visited[next.x][next.y] = true;
+                stack.offerFirst(next);
             } else {  // backtracking if current stack.peek() has no choice to go
-                stack.pollFirst();
-                continue;
+                stack.pop();
+                //continue;
             }
         }
     }
@@ -77,13 +101,13 @@ public class SearchPathByDFS {
         if (e.x - 1 >= 0 && visited[e.x - 1][e.y] == false && maze[e.x - 1][e.y] == 0) {  // go up
             return new Entry(e.x - 1, e.y, 0);
         }
-        if (e.x + 1 < maze.length && visited[e.x + 1][e.y] == false && maze[e.x + 1][e.y] == 0) {  // go down
+        else if (e.x + 1 < maze.length && visited[e.x + 1][e.y] == false && maze[e.x + 1][e.y] == 0) {  // go down
             return new Entry(e.x + 1, e.y, 0);
         }
-        if (e.y - 1 >= 0 && visited[e.x][e.y - 1] == false && maze[e.x][e.y - 1] == 0) {  // go left
+        else if (e.y - 1 >= 0 && visited[e.x][e.y - 1] == false && maze[e.x][e.y - 1] == 0) {  // go left
             return new Entry(e.x, e.y - 1, 0);
         }
-        if (e.y + 1 < maze[0].length && visited[e.x][e.y + 1] == false && maze[e.x][e.y + 1] == 0) {  // go right
+        else if (e.y + 1 < maze[0].length && visited[e.x][e.y + 1] == false && maze[e.x][e.y + 1] == 0) {  // go right
             return new Entry(e.x, e.y + 1, 0);
         }
         // no valid path to go
