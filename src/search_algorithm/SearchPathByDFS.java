@@ -62,10 +62,6 @@ public class SearchPathByDFS {
         Entry start = new Entry(0, 0, 0);
         Entry end = new Entry(maze.length - 1, maze.length - 1, 0);
         searchPath(stack, maze, visited, start, end);
-        // push end to stack if it finds a path
-//        if (!stack.isEmpty()) {
-//            stack.offerFirst(end);
-//        }
         // reverse order to get path from start to end
         Deque<Entry> path = reverseStack(stack);
         while (!path.isEmpty()) {
