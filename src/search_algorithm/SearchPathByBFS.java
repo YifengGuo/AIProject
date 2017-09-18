@@ -112,16 +112,16 @@ public class SearchPathByBFS {
 
     private Queue<Node> getAdjacentNotmarkedNode(Node e, boolean[][] marked, int[][] maze) {
        Queue<Node> adj = new LinkedList<Node>();
-        if (e.x - 1 >= 0 && marked[e.x - 1][e.y] == false && maze[e.x - 1][e.y] == 0) {  // go up
+        if (e.x - 1 >= 0 && marked[e.x - 1][e.y] == false && maze[e.x - 1][e.y] == 1) {  // go up
             adj.add(new Node(e.x - 1, e.y));
         }
-        if (e.x + 1 <= maze.length - 1 && marked[e.x + 1][e.y] == false && maze[e.x + 1][e.y] == 0) {  // go down
+        if (e.x + 1 <= maze.length - 1 && marked[e.x + 1][e.y] == false && maze[e.x + 1][e.y] == 1) {  // go down
             adj.add(new Node(e.x + 1, e.y));
         }
-        if (e.y - 1 >= 0 && marked[e.x ][e.y - 1] == false && maze[e.x][e.y - 1] == 0) {  // go left
+        if (e.y - 1 >= 0 && marked[e.x ][e.y - 1] == false && maze[e.x][e.y - 1] == 1) {  // go left
             adj.add(new Node(e.x, e.y - 1));
         }
-        if (e.y + 1 <= marked.length -1 && marked[e.x ][e.y + 1] == false && maze[e.x][e.y + 1] == 0) {  // go right
+        if (e.y + 1 <= marked.length -1 && marked[e.x ][e.y + 1] == false && maze[e.x][e.y + 1] == 1) {  // go right
             adj.add(new Node( e.x , e.y + 1));
         }
         return adj;
