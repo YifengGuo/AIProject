@@ -6,7 +6,7 @@ import java.util.Random;
  * @author yifengguo
  */
 public class GenerateRandomMaze {
-    private final static int dim = 5;
+    private final static int dim = 15;
     private final static double p0 = 0.0;
     private final static double p1 = 0.1;
     private final static double p2 = 0.3;
@@ -18,16 +18,16 @@ public class GenerateRandomMaze {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 double p = rand.nextDouble(); // 0.0 - 1.0
-                if (p >= p3) {  // change wall occurrence probability
-                    maze[i][j] = 0; // path
+                if (p >= p2) {  // change wall occurrence probability
+                    maze[i][j] = 1; // path
                 } else {
-                    maze[i][j] = 1; // wall
+                    maze[i][j] = 0; // wall
                 }
             }
         }
         // reset start and goal
-        maze[0][0] = 0;
-        maze[dim - 1][dim - 1] = 0;
+        maze[0][0] = 1;
+        maze[dim - 1][dim - 1] = 1;
         return maze;
     }
 
