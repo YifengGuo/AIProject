@@ -88,7 +88,7 @@ public class SearchPathByDFS {
                 stack.offerFirst(next);
             } else {  // backtracking if current stack.peek() has no choice to go
                 stack.pop();
-                //continue;
+                continue;
             }
         }
     }
