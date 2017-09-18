@@ -3,9 +3,7 @@ package search_algorithm;
 import maze_generation.GenerateRandomMaze;
 
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Stack;
@@ -13,7 +11,7 @@ import java.util.Stack;
 /**
  * @author Allen Ni
  */
-public class SearchPathByAstar {
+public class SearchPathByAstar_Euclidean {
     static class Entry {
         int x;
         int y;
@@ -208,7 +206,7 @@ public class SearchPathByAstar {
         }
         Entry start = new Entry(0, 0, 0);
         Entry end = new Entry(maze.length - 1, maze.length - 1, 0);
-        List<Entry> res = new SearchPathByAstar().getPath(maze, start, end);
+        List<Entry> res = new SearchPathByAstar_Euclidean().getPath(maze, start, end);
         
         // fail to find the path if stack is empty
         if (res.isEmpty()) {
