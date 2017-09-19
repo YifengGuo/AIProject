@@ -61,21 +61,21 @@ public class SearchPathByAstar_Euclidean {
 
         public List<Entry> adjacentNodes(int[][] maze) {
         	List<Entry> nodes = new ArrayList<Entry>();
-        	if (this.x - 1 >= 0 && maze[this.x - 1][this.y] == 0) {
+        	if (this.x - 1 >= 0 && maze[this.x - 1][this.y] == 1) {
         		// up node
-        		nodes.add(new Entry(this.x - 1, this.y, 0));
+        		nodes.add(new Entry(this.x - 1, this.y, 1));
         	}
-        	if (this.x + 1 < maze.length && maze[this.x + 1][this.y] == 0) {
+        	if (this.x + 1 < maze.length && maze[this.x + 1][this.y] == 1) {
         		// down node
-        		nodes.add(new Entry(this.x + 1, this.y, 0));
+        		nodes.add(new Entry(this.x + 1, this.y, 1));
         	}
-        	if (this.y - 1 >= 0 && maze[this.x][this.y - 1] == 0) {
+        	if (this.y - 1 >= 0 && maze[this.x][this.y - 1] == 1) {
         		// left node
-        		nodes.add(new Entry(this.x, this.y - 1, 0));
+        		nodes.add(new Entry(this.x, this.y - 1, 1));
         	}
-        	if (this.y + 1 < maze.length && maze[this.x][this.y + 1] == 0) {
+        	if (this.y + 1 < maze.length && maze[this.x][this.y + 1] == 1) {
         		// left node
-        		nodes.add(new Entry(this.x, this.y + 1, 0));
+        		nodes.add(new Entry(this.x, this.y + 1, 1));
         	}
         	return nodes;
         }
@@ -204,8 +204,8 @@ public class SearchPathByAstar_Euclidean {
             }
             System.out.println();
         }
-        Entry start = new Entry(0, 0, 0);
-        Entry end = new Entry(maze.length - 1, maze.length - 1, 0);
+        Entry start = new Entry(0, 0, 1);
+        Entry end = new Entry(maze.length - 1, maze.length - 1, 1);
         List<Entry> res = new SearchPathByAstar_Euclidean().getPath(maze, start, end);
         
         // fail to find the path if stack is empty
