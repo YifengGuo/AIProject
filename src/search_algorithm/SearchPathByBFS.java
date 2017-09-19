@@ -3,6 +3,10 @@ package search_algorithm;
 
 import maze_generation.GenerateRandomMaze;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -30,6 +34,8 @@ public class SearchPathByBFS {
         }
     }
 
+
+
     public SearchPathByBFS(int[][] maze){
         marked = new boolean[maze.length][maze.length];
         distTo = new int[maze.length][maze.length];
@@ -37,7 +43,7 @@ public class SearchPathByBFS {
 
     }
 
-    private void bfs(int[][] maze, Node start, Node end){
+    private Queue<Node> bfs(int[][] maze, Node start, Node end){
         Queue<Node> queue = new LinkedList<Node>();
         marked = new boolean[maze.length][maze.length];
         distTo = new int[maze.length][maze.length];
@@ -69,16 +75,20 @@ public class SearchPathByBFS {
         }
 
         if(!hasPath(end)){
-            System.out.println("Fail to find the path.");
+            return  null;
+            //System.out.println("Fail to find the path.");
         }
         else{
-            System.out.print("( "+start.x+" , "+start.y+" )");
+            //System.out.print("( "+start.x+" , "+start.y+" )");
+            Queue<Node> result = new LinkedList<Node>();
+            result.add(start);
             Stack<Node> temp = pathTo(end);
             while(!temp.empty()){
                 Node a = temp.pop();
-                System.out.print(" ( "+a.x+" , "+a.y+" )");
+                result.add(a);
+              //  System.out.print(" ( "+a.x+" , "+a.y+" )");
             }
-
+            return result;
             }
 
 
@@ -110,6 +120,40 @@ public class SearchPathByBFS {
         return path;
     }
 
+    private static void outputMaze(int[][] maze, Queue<Node> queue) {
+        File file = new File("src/data_visualization/BFS/bfs_maze_shortest.csv");
+        BufferedWriter bw = null;
+        // change path cell to 2
+        while(!queue.isEmpty()){
+            Node e = queue.poll();
+            System.out.print("( "+e.x+" , "+e.y+" ) ");
+            maze[e.x][e.y] = 2;
+        }
+        try {
+            bw = new BufferedWriter(new FileWriter(file));
+            for (int i = 0; i < maze.length; i++) {
+                for (int j = 0; j < maze.length; j++) {
+                    if (j != maze.length - 1) {
+                        bw.write(maze[i][j] + ",");
+                    } else {
+                        bw.write(maze[i][j]+ "");
+                    }
+                }
+                bw.write("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     private Queue<Node> getAdjacentNotmarkedNode(Node e, boolean[][] marked, int[][] maze) {
        Queue<Node> adj = new LinkedList<Node>();
         if (e.x - 1 >= 0 && marked[e.x - 1][e.y] == false && maze[e.x - 1][e.y] == 1) {  // go up
@@ -128,6 +172,7 @@ public class SearchPathByBFS {
 
     }
 
+
     public static void main(String[] args){
         int[][] maze = new GenerateRandomMaze().genereate();
         // print maze
@@ -137,13 +182,19 @@ public class SearchPathByBFS {
             }
             System.out.println();
         }
+        System.out.println();
 
        SearchPathByBFS bfs = new SearchPathByBFS(maze);
-        bfs.bfs(maze,                                                  //set the maze
+        Queue<Node> shortestPath = new LinkedList<Node>();
+        Queue<Node> temp = new LinkedList<Node>();
+
+        shortestPath = bfs.bfs(maze,                                   //set the maze
                 bfs.setStart(0 , 0),                            //set the start point
                 bfs.setEnd(maze.length - 1, maze.length - 1)    //set the end point
         );
 
+
+        outputMaze(maze , shortestPath);
 
 
     }
