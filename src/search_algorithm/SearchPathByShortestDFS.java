@@ -54,6 +54,18 @@ public class SearchPathByShortestDFS {
         }
     }
 
+
+    private int maxFringeSize;
+    private int expandedNodes;
+    private void setMaxFringeSize(int maximun){
+        maxFringeSize = maximun;
+    }
+    private  int getMaxFringeSize(){
+        return maxFringeSize;
+    }
+
+
+
     public List<Entry> getPath(int[][] maze) {
         List<Entry> res = new ArrayList<>();
         if (maze == null || maze.length == 0 || maze[0].length == 0) {
@@ -84,6 +96,9 @@ public class SearchPathByShortestDFS {
         stack.offerFirst(start);  // push start
         visitedDist[start.x][start.y] = 1;
 
+        maxFringeSize = 0;
+        expandedNodes = 1;
+
         while (!stack.isEmpty()) {  // stack is empty means cannot find shorter path
             Entry next = getAdjacentNotVisitedEntry(stack.peekFirst(), visitedDist, weightedMaze);  // next is always on more optimal path
             if (next.x == -1) {  // cannot find valid path from adjacent entries
@@ -93,6 +108,11 @@ public class SearchPathByShortestDFS {
             if (next.equals(end)) {  // find a path with shorter path length than historical shortest path
                 visitedDist[next.x][next.y] = visitedDist[stack.peekFirst().x][stack.peekFirst().y] + 1;  // update end to start shortest distance
                 stack.offerFirst(next);
+
+                if(stack.size() > getMaxFringeSize()){   // this stack stores the fringe nodes, and can get the largest size of stack
+                    setMaxFringeSize(stack.size());
+                }
+
                 shortestPath.clear();
                 Deque<Entry> temp = new LinkedList<>();
                 temp.addAll(stack);
@@ -208,10 +228,17 @@ public class SearchPathByShortestDFS {
         }
     }
 
+
+
+    //return the length of solution path
+    public int getPathLength(List<Entry> queue){
+        return queue.size();
+    }
     public static void main(String[] args) {
         int[][] maze = new GenerateRandomMaze().genereate();
         int[][] weightedMaze = getWeightedMaze(maze);
-        List<Entry> res = new SearchPathByShortestDFS().getPath(weightedMaze);
+        SearchPathByShortestDFS dfsClass = new SearchPathByShortestDFS();
+        List<Entry> res = dfsClass.getPath(weightedMaze);
         // print maze
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze.length; j++) {
@@ -220,9 +247,15 @@ public class SearchPathByShortestDFS {
             System.out.println();
         }
         System.out.println();
+
+
         // print weighted maze
+        int visitedCount = 0;
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze.length; j++) {
+                if (weightedMaze[i][j] > 0) {
+                    visitedCount++;
+                }
                 System.out.print(weightedMaze[i][j] + " ");
             }
             System.out.println();
@@ -241,5 +274,11 @@ public class SearchPathByShortestDFS {
         // path visualization
         outputMaze(maze, res);
         outputPath(res);
+
+        int pathLength = dfsClass.getPathLength(res);
+        int maxFringeSize = dfsClass.getMaxFringeSize();
+        System.out.println("\n" + "The length of solution path is: " + pathLength);
+        System.out.println("The total number of nodes expanded is: "+ visitedCount);
+        System.out.println("The maximum size of fringe during runtime is: " + maxFringeSize);
     }
 }
