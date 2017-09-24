@@ -2,6 +2,10 @@ package search_algorithm;
 
 import maze_generation.GenerateRandomMaze;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -194,6 +198,58 @@ public class SearchPathByAstar_Manhattan {
     	return g + h;
     }
 
+    private static void outputMaze(int[][] maze, List<Entry> list) {
+        File file = new File("src/data_visualization/Astar/Astar_man_maze_shortest.csv");
+        BufferedWriter bw = null;
+        // change path cell to 2
+        for (Entry e : list) {
+            maze[e.x][e.y] = 2;
+        }
+        try {
+            bw = new BufferedWriter(new FileWriter(file));
+            for (int i = 0; i < maze.length; i++) {
+                for (int j = 0; j < maze.length; j++) {
+                    if (j != maze.length - 1) {
+                        bw.write(maze[i][j] + ",");
+                    } else {
+                        bw.write(maze[i][j]+ "");
+                    }
+                }
+                bw.write("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private static void outputPath(List<Entry> list) {
+        File file = new File("src/data_visualization/Astar/Astar_man_path_shortest.csv");
+        BufferedWriter bw = null;
+        try {
+            bw = new BufferedWriter(new FileWriter(file));
+            for (Entry e : list) {
+                bw.write(e.x + "," + e.y + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
         int[][] maze = new GenerateRandomMaze().genereate();
@@ -217,5 +273,9 @@ public class SearchPathByAstar_Manhattan {
         for (Entry e : res) {
             System.out.print(e.toString() + " ");
         }
+
+        // path visualization
+        outputMaze(maze, res);
+        outputPath(res);
     }
 }
