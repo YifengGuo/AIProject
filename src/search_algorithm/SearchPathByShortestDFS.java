@@ -57,12 +57,20 @@ public class SearchPathByShortestDFS {
 
     private int maxFringeSize;
     private int expandedNodes;
+    private int pathLength;
     private void setMaxFringeSize(int maximun){
-        maxFringeSize = maximun;
+        this.maxFringeSize = maximun;
     }
     private  int getMaxFringeSize(){
         return maxFringeSize;
     }
+    private void setPathLength(int length){
+        this.pathLength = length;
+    }
+    private int getPathLength(){
+        return pathLength;
+    }
+
 
 
 
@@ -87,6 +95,7 @@ public class SearchPathByShortestDFS {
             res.add(shortestPath.pollFirst());
         }
 
+        setPathLength(res.size());
         return res;
     }
 
@@ -280,5 +289,7 @@ public class SearchPathByShortestDFS {
         System.out.println("\n" + "The length of solution path is: " + pathLength);
         System.out.println("The total number of nodes expanded is: "+ visitedCount);
         System.out.println("The maximum size of fringe during runtime is: " + maxFringeSize);
+
+       // System.out.print("Print path length: " + dfsClass.getPathLength());
     }
 }
