@@ -54,25 +54,21 @@ public class SearchPathByShortestDFS {
         }
     }
 
-
     private int maxFringeSize;
     private int expandedNodes;
     private int pathLength;
-    private void setMaxFringeSize(int maximun){
+    public void setMaxFringeSize(int maximun){
         this.maxFringeSize = maximun;
     }
-    private  int getMaxFringeSize(){
+    public int getMaxFringeSize(){
         return maxFringeSize;
     }
-    private void setPathLength(int length){
+    public void setPathLength(int length){
         this.pathLength = length;
     }
-    private int getPathLength(){
+    public int getPathLength(){
         return pathLength;
     }
-
-
-
 
     public List<Entry> getPath(int[][] maze) {
         List<Entry> res = new ArrayList<>();
@@ -184,6 +180,7 @@ public class SearchPathByShortestDFS {
         }
         return weightedMaze;
     }
+
     private static void outputMaze(int[][] maze, List<Entry> list) {
         File file = new File("src/data_visualization/DFS/dfs_maze_shortest.csv");
         BufferedWriter bw = null;
@@ -237,12 +234,11 @@ public class SearchPathByShortestDFS {
         }
     }
 
-
-
     //return the length of solution path
     public int getPathLength(List<Entry> queue){
         return queue.size();
     }
+
     public static void main(String[] args) {
         int[][] maze = new GenerateRandomMaze().genereate();
         int[][] weightedMaze = getWeightedMaze(maze);
@@ -290,6 +286,6 @@ public class SearchPathByShortestDFS {
         System.out.println("The total number of nodes expanded is: "+ visitedCount);
         System.out.println("The maximum size of fringe during runtime is: " + maxFringeSize);
 
-       // System.out.print("Print path length: " + dfsClass.getPathLength());
+        //System.out.print("Print path length: " + dfsClass.getPathLength());
     }
 }
