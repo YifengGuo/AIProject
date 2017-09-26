@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7b12c0e-ea19-4f39-854e-5b8f116be554" name="Default" comment="">
+    <list default="true" id="14a3e703-7682-4df6-861b-4ebcdea1edc5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_euc_maze_shortest.csv" afterPath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_euc_maze_shortest.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_euc_path_shortest.csv" afterPath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_euc_path_shortest.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_man_maze_shortest.csv" afterPath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_man_maze_shortest.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_man_path_shortest.csv" afterPath="$PROJECT_DIR$/src/data_visualization/Astar/Astar_man_path_shortest.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Euclidean.java" afterPath="$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Euclidean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Manhattan.java" afterPath="$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Manhattan.java" />
     </list>
@@ -15,32 +19,35 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="AIProject" />
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="SearchPathByAstar_Manhattan.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Manhattan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="278" column="24" lean-forward="true" selection-start-line="276" selection-start-column="7" selection-end-line="278" selection-end-column="24" />
+            <state relative-caret-position="533">
+              <caret line="301" column="44" lean-forward="true" selection-start-line="299" selection-start-column="8" selection-end-line="301" selection-end-column="44" />
               <folding>
-                <element signature="e#1670#1677#0" expanded="true" />
-                <element signature="e#3826#3841#0" expanded="true" />
-                <element signature="e#3995#4010#0" expanded="true" />
-                <element signature="e#4089#4103#0" expanded="true" />
-                <element signature="e#4162#4169#0" expanded="true" />
-                <element signature="e#4260#4276#0" expanded="true" />
-                <element signature="e#4383#4390#0" expanded="true" />
+                <element signature="e#8235#8236#0" expanded="true" />
+                <element signature="e#8271#8272#0" expanded="true" />
+                <element signature="e#8317#8318#0" expanded="true" />
+                <element signature="e#8353#8354#0" expanded="true" />
+                <element signature="e#8393#8394#0" expanded="true" />
+                <element signature="e#8424#8425#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchPathByBFS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByBFS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -48,9 +55,16 @@
       <file leaf-file-name="SearchPathByAstar_Euclidean.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Euclidean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="279" column="24" lean-forward="false" selection-start-line="279" selection-start-column="24" selection-end-line="279" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="2849">
+              <caret line="299" column="44" lean-forward="false" selection-start-line="299" selection-start-column="44" selection-end-line="299" selection-end-column="44" />
+              <folding>
+                <element signature="e#8327#8328#0" expanded="true" />
+                <element signature="e#8363#8364#0" expanded="true" />
+                <element signature="e#8409#8410#0" expanded="true" />
+                <element signature="e#8445#8446#0" expanded="true" />
+                <element signature="e#8485#8486#0" expanded="true" />
+                <element signature="e#8516#8517#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,6 +79,9 @@
       <projects_view />
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Manhattan.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -78,6 +95,12 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="25" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -94,6 +117,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -111,33 +137,18 @@
               <item name="AIProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="AIProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data_visualization" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data_visualization" type="462c0819:PsiDirectoryNode" />
-              <item name="Astar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="search_algorithm" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -287,36 +298,46 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d7b12c0e-ea19-4f39-854e-5b8f116be554" name="Default" comment="" />
-      <created>1506286258072</created>
+      <changelist id="14a3e703-7682-4df6-861b-4ebcdea1edc5" name="Default" comment="" />
+      <created>1506383869217</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1506286258072</updated>
-      <workItem from="1506286263529" duration="464000" />
+      <updated>1506383869217</updated>
+      <workItem from="1506383872589" duration="4179000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="464000" />
+    <option name="totallyTimeSpent" value="4179000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="42" width="1382" height="838" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -327,7 +348,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -341,36 +361,38 @@
     <breakpoint-manager />
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByBFS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Manhattan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="278" column="24" lean-forward="true" selection-start-line="276" selection-start-column="7" selection-end-line="278" selection-end-column="24" />
+        <state relative-caret-position="533">
+          <caret line="301" column="44" lean-forward="true" selection-start-line="299" selection-start-column="8" selection-end-line="301" selection-end-column="44" />
           <folding>
-            <element signature="e#1670#1677#0" expanded="true" />
-            <element signature="e#3826#3841#0" expanded="true" />
-            <element signature="e#3995#4010#0" expanded="true" />
-            <element signature="e#4089#4103#0" expanded="true" />
-            <element signature="e#4162#4169#0" expanded="true" />
-            <element signature="e#4260#4276#0" expanded="true" />
-            <element signature="e#4383#4390#0" expanded="true" />
+            <element signature="e#8235#8236#0" expanded="true" />
+            <element signature="e#8271#8272#0" expanded="true" />
+            <element signature="e#8317#8318#0" expanded="true" />
+            <element signature="e#8353#8354#0" expanded="true" />
+            <element signature="e#8393#8394#0" expanded="true" />
+            <element signature="e#8424#8425#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/search_algorithm/SearchPathByAstar_Euclidean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="279" column="24" lean-forward="false" selection-start-line="279" selection-start-column="24" selection-end-line="279" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="2849">
+          <caret line="299" column="44" lean-forward="false" selection-start-line="299" selection-start-column="44" selection-end-line="299" selection-end-column="44" />
+          <folding>
+            <element signature="e#8327#8328#0" expanded="true" />
+            <element signature="e#8363#8364#0" expanded="true" />
+            <element signature="e#8409#8410#0" expanded="true" />
+            <element signature="e#8445#8446#0" expanded="true" />
+            <element signature="e#8485#8486#0" expanded="true" />
+            <element signature="e#8516#8517#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

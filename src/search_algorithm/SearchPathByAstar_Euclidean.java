@@ -18,6 +18,10 @@ import java.util.Stack;
  * @author Allen Ni
  */
 public class SearchPathByAstar_Euclidean {
+    private static int maxFringeSize = 0;
+    private static int expandedNodes = 0;
+    private static int pathSize;
+
     static class Entry {
         int x;
         int y;
@@ -146,6 +150,7 @@ public class SearchPathByAstar_Euclidean {
     	PriorityQueue<EntryWithValue> pq = new PriorityQueue<EntryWithValue>();
     	while (!openList.isEmpty() && !openList.containsKey(end)) {
     		List<Entry> open = new ArrayList<Entry>(openList.keySet());
+            expandedNodes += open.size();
     		for (Entry current : open) {
     			if (current.adjacentNodes(maze).size() == 0) {
     				openList.remove(current);
@@ -178,6 +183,9 @@ public class SearchPathByAstar_Euclidean {
     			// move current node from open list to close list
     			closeList.put(current, openList.get(current));
     			openList.remove(current);
+                // update max fringe size
+                if (openList.size() > maxFringeSize)
+                    maxFringeSize = openList.size();
         		
     		}    		
     	}
@@ -251,7 +259,16 @@ public class SearchPathByAstar_Euclidean {
             }
         }
     }
+    public static int getExpandedNodes() {
+        return expandedNodes;
+    }
 
+    public static int getMaxSizeOdFringe() {
+        return maxFringeSize;
+    }
+    public static int getPathLength() {
+        return pathSize;
+    }
 
     public static void main(String[] args) {
         int[][] maze = new GenerateRandomMaze().genereate();
@@ -265,7 +282,7 @@ public class SearchPathByAstar_Euclidean {
         Entry start = new Entry(0, 0, 1);
         Entry end = new Entry(maze.length - 1, maze.length - 1, 1);
         List<Entry> res = new SearchPathByAstar_Euclidean().getPath(maze, start, end);
-        
+        pathSize = res.size();
         // fail to find the path if stack is empty
         if (res.isEmpty()) {
             System.out.println();
@@ -278,5 +295,8 @@ public class SearchPathByAstar_Euclidean {
         // path visualization
         outputMaze(maze, res);
         outputPath(res);
+        System.out.println(getExpandedNodes());
+        System.out.println(getMaxSizeOdFringe());
+        System.out.println(getPathLength());
     }
 }
