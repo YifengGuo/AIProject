@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /*
  * goal state : hardest maze: number of path cell -> 2* (2 * n - 1)
- * evaluation function: f(n) = number of path cell of maze
+ * evaluation function: f(n) = number of wall cell of maze
  *
  */
 public class GeneticAlgorithm {
@@ -159,8 +159,8 @@ public class GeneticAlgorithm {
         int[][] mutateMaze2 = mazeList.get(randIdx2);
 
         // mutate process
-        mutateMaze1[mutateCoordinate1[0]][mutateCoordinate1[1]] = 0;
-        mutateMaze2[mutateCoordinate2[0]][mutateCoordinate2[1]] = 0;
+        mutateMaze1[mutateCoordinate1[0]][mutateCoordinate1[1]] = 0; // add wall on random position
+        mutateMaze2[mutateCoordinate2[0]][mutateCoordinate2[1]] = 0; // add wall on random position
     }
 
 
@@ -174,7 +174,6 @@ public class GeneticAlgorithm {
     private static int[] getRandomMutationCoordinate() {
         int totalCol = mazeList.get(0)[0].length;; // total column number of maze
         int totalRow = mazeList.get(0).length; // total row number of maze
-        Random rand = new Random();
         int mutateRowIdx = getRandomNumberFromGivenRange(0, totalRow);
         int mutateColIdx = getRandomNumberFromGivenRange(0, totalCol);
         return new int[]{mutateRowIdx, mutateColIdx};
@@ -259,8 +258,9 @@ public class GeneticAlgorithm {
                     return;
                 }
                 int[][] weightedMaze = getWeightedMaze(maze);
-                int pathLength = dfs.getPath(weightedMaze).size();
-                if (pathLength > 30) {
+                List<SearchPathByShortestDFS.Entry> path = dfs.getPath(weightedMaze);
+                int pathLength = path.size();
+                if (pathLength > 31) {
                     pathNum = pathLength;
                     hardest = maze;
                     for (int i = 0; i < hardest.length; i++) {
@@ -269,7 +269,10 @@ public class GeneticAlgorithm {
                         }
                         System.out.println();
                     }
-                    System.out.print("path length = " + pathLength + " ");
+                    System.out.println("path length = " + pathLength + " ");
+                    for (SearchPathByShortestDFS.Entry e : path) {
+                        System.out.print(e.toString() + " ");
+                    }
                     return;
                 }
                 System.out.print("path length = " + pathLength + " ");
