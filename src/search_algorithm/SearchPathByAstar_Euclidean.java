@@ -212,7 +212,7 @@ public class SearchPathByAstar_Euclidean {
         BufferedWriter bw = null;
         // change path cell to 2
         for (Entry e : list) {
-            maze[e.x][e.y] = 2;
+//            maze[e.x][e.y] = 2;
         }
         try {
             bw = new BufferedWriter(new FileWriter(file));
