@@ -263,7 +263,7 @@ public class SearchPathByAstar_Euclidean {
         return expandedNodes;
     }
 
-    public static int getMaxSizeOdFringe() {
+    public static int getMaxSizeOfFringe() {
         return maxFringeSize;
     }
     public static int getPathLength() {
@@ -296,7 +296,7 @@ public class SearchPathByAstar_Euclidean {
         outputMaze(maze, res);
         outputPath(res);
         System.out.println(getExpandedNodes());
-        System.out.println(getMaxSizeOdFringe());
+        System.out.println(getMaxSizeOfFringe());
         System.out.println(getPathLength());
     }
 }

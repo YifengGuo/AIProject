@@ -14,10 +14,10 @@ import java.util.*;
  *
  */
 public class SearchPathByBFS {
-    private static final int INFINITY = Integer.MAX_VALUE;
-    private boolean[][] marked;
-    //private int[][][] edgeTo;
-    private int[][] distTo;
+    public static final int INFINITY = Integer.MAX_VALUE;
+    public boolean[][] marked;
+    //public int[][][] edgeTo;
+    public int[][] distTo;
 
     class Node {
         int x;
@@ -45,7 +45,7 @@ public class SearchPathByBFS {
     }
 
     // return the total number of nodes expanded
-    private int getExpandedNodes(boolean[][] marked){
+    public int getExpandedNodes(boolean[][] marked){
         int count = 0 ;
         for(int i = 0; i<marked.length - 1; i++){
             for(int j = 0; j < marked.length - 1;j++){
@@ -58,7 +58,7 @@ public class SearchPathByBFS {
     }
 
     //return the maximum size of fringe during runtime in BFS
-    private  int getMaxSizeOfFringe(int[][] distTo){
+    public  int getMaxSizeOfFringe(int[][] distTo){
         int[] count =new int[2*distTo.length];
         for(int i = 0; i <distTo.length -1; i++){
             for(int j = 0; j< distTo.length -1; j++){
@@ -77,11 +77,11 @@ public class SearchPathByBFS {
     }
 
     //return the length of solution path
-    private int getPathLength(Queue<Node> queue){
+    public int getPathLength(Queue<Node> queue){
         return queue.size();
     }
 
-    private Queue<Node> bfs(int[][] maze, Node start, Node end){
+    public Queue<Node> bfs(int[][] maze, Node start, Node end){
         Queue<Node> queue = new LinkedList<Node>();
         marked = new boolean[maze.length][maze.length];
         distTo = new int[maze.length][maze.length];
@@ -158,7 +158,7 @@ public class SearchPathByBFS {
         return path;
     }
 
-    private static void outputMaze(int[][] maze, Queue<Node> queue) {
+    public static void outputMaze(int[][] maze, Queue<Node> queue) {
         File file = new File("src/data_visualization/BFS/bfs_maze_shortest.csv");
         BufferedWriter bw = null;
         // change path cell to 2
@@ -192,7 +192,7 @@ public class SearchPathByBFS {
         }
     }
 
-    private Queue<Node> getAdjacentNotmarkedNode(Node e, boolean[][] marked, int[][] maze) {
+    public Queue<Node> getAdjacentNotmarkedNode(Node e, boolean[][] marked, int[][] maze) {
        Queue<Node> adj = new LinkedList<Node>();
         if (e.x - 1 >= 0 && marked[e.x - 1][e.y] == false && maze[e.x - 1][e.y] == 1) {  // go up
             adj.add(new Node(e.x - 1, e.y));
