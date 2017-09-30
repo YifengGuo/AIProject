@@ -184,10 +184,6 @@ public class SearchPathByShortestDFS {
     private static void outputMaze(int[][] maze, List<Entry> list) {
         File file = new File("src/data_visualization/DFS/dfs_maze_shortest.csv");
         BufferedWriter bw = null;
-        // change path cell to 2
-        for (Entry e : list) {
-            maze[e.x][e.y] = 2;
-        }
         try {
             bw = new BufferedWriter(new FileWriter(file));
             for (int i = 0; i < maze.length; i++) {
