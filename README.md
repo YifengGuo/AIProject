@@ -16,12 +16,9 @@ src
 ├── maze_generation
 │   └── GenerateRandomMaze.java 			// generate random mazes
 └── search_algorithm
-    ├── BFSLengthOfSolutionPathReturn.java	// GA solving BFS condition 1
-    ├── BFSMaximumSizeOfFringe.java			// GA solving BFS condition 2
-    ├── BFSTotalNodesOfExpanded.java		// GA solving BFS condition 3
+    ├── BFSFindHardMaze.java                // GA solving BFS 
     ├── FindHardMazeByAstar.java			// GA solving Astar using Euclidean 
     ├── FindHardMazeByAstar_man.java		// GA solving Astar using Manhattan
-    ├── FindHardMazeByBFS.java
     ├── GeneticAlgorithm.java
     ├── GeneticAlgorithmScalar.java			// GA solving DFS 
     ├── SearchPathByAstar_Euclidean.java	// Path searching by Astar(Euclidean)
