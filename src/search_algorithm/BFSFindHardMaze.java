@@ -5,7 +5,7 @@ import maze_generation.GenerateRandomMaze;
 import java.util.*;
 
 /**
- * Created by guoyifeng on 9/28/17.
+ * Created by Yunfan Xu on 9/28/17.
  */
 /*
  * goal state : hardest maze: number of path cell -> 2.5 * maze.length for shortestDFS
