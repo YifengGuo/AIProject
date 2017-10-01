@@ -260,226 +260,234 @@ public class BFSFindHardMaze {
 
 
     public static void main(String[] args) {
-        int[][] hardest;
-        int epoch = 0;
-        System.out.println("Please enter the option you want:");
-        System.out.println("1). Length of solution path returned.");
-        System.out.println("2). Total number of nodes expanded.");
-        System.out.println("3). Maximum size of fringe during runtime.");
-        System.out.print("Enter your choice: ");
-        Scanner reader = new Scanner(System.in);
-        int option = reader.nextInt();
-        if(option == 1) {
-            while (true) {
-                // evaluation function value(number of 1) for each maze
-                int[] EFArray = new int[mazeList.size()]; // evaluation function array record
-                // number of valid wall cell in each maze
-                for (int i = 0; i < EFArray.length; i++) {
-                    EFArray[i] = f(mazeList.get(i));
-                }
-                int totalNum = 0;
-                for (int num : EFArray) {
-                    totalNum += num;
-                }
 
-                // calculate selection probability of each maze and store them in probArray
-                double[] probArray = getProbArray(mazeList, EFArray, totalNum);
-
-                // get the selected mazes for reproduction
-                List<int[][]> selectedMazes = new ArrayList<>();
-                for (int i = 0; i < mazeList.size(); i++) {
-                    selectedMazes.add(selectedMaze(randomArray, i, probArray, mazeList));
-                }
-
-                // update maze list with selected mazes
-                mazeList.clear();
-                mazeList.addAll(selectedMazes);
-
-                // crossover
-                mazeList = crossover(mazeList);
-
-                // mutate
-                mutate(mazeList);
-
-                for (int[][] maze : mazeList) {
-                    if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
-                        System.out.println("Fail to construct hardest maze for cells cannot build a path.");
-                        return;
+        while(true) {
+            int[][] hardest;
+            int epoch = 0;
+            System.out.println("Please enter the option you want:");
+            System.out.println("1). Length of solution path returned.");
+            System.out.println("2). Total number of nodes expanded.");
+            System.out.println("3). Maximum size of fringe during runtime.");
+            System.out.println("4). End this function.");
+            System.out.print("Enter your choice: ");
+            Scanner reader = new Scanner(System.in);
+            int option = reader.nextInt();
+            if (option == 1) {
+                while (true) {
+                    // evaluation function value(number of 1) for each maze
+                    int[] EFArray = new int[mazeList.size()]; // evaluation function array record
+                    // number of valid wall cell in each maze
+                    for (int i = 0; i < EFArray.length; i++) {
+                        EFArray[i] = f(mazeList.get(i));
                     }
-                    //try to find the harder in BFS
-                    SearchPathByBFS bfs = new SearchPathByBFS(maze);
-                    Queue<SearchPathByBFS.Node> shortestPath = new LinkedList<>();
-                    shortestPath = bfs.bfs(maze,                                   //set the maze
-                            bfs.setStart(0, 0),                            //set the start point
-                            bfs.setEnd(maze.length - 1, maze.length - 1)    //set the end point
-                    );
-
-                    //BFS.i)Length of solution path returned
-                    if (shortestPath == null) {
-                        continue;
+                    int totalNum = 0;
+                    for (int num : EFArray) {
+                        totalNum += num;
                     }
-                    int pathLength = shortestPath.size();
-                    if (pathLength > 2.5 * maze.length) {  // this if controls loop termination
-                        hardest = maze;
-                        for (int i = 0; i < hardest.length; i++) {
-                            for (int j = 0; j < hardest[0].length; j++) {
-                                System.out.print(hardest[i][j] + " ");
+
+                    // calculate selection probability of each maze and store them in probArray
+                    double[] probArray = getProbArray(mazeList, EFArray, totalNum);
+
+                    // get the selected mazes for reproduction
+                    List<int[][]> selectedMazes = new ArrayList<>();
+                    for (int i = 0; i < mazeList.size(); i++) {
+                        selectedMazes.add(selectedMaze(randomArray, i, probArray, mazeList));
+                    }
+
+                    // update maze list with selected mazes
+                    mazeList.clear();
+                    mazeList.addAll(selectedMazes);
+
+                    // crossover
+                    mazeList = crossover(mazeList);
+
+                    // mutate
+                    mutate(mazeList);
+
+                    for (int[][] maze : mazeList) {
+                        if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
+                            System.out.println("Fail to construct hardest maze for cells cannot build a path.");
+                            return;
+                        }
+                        //try to find the harder in BFS
+                        SearchPathByBFS bfs = new SearchPathByBFS(maze);
+                        Queue<SearchPathByBFS.Node> shortestPath = new LinkedList<>();
+                        shortestPath = bfs.bfs(maze,                                   //set the maze
+                                bfs.setStart(0, 0),                            //set the start point
+                                bfs.setEnd(maze.length - 1, maze.length - 1)    //set the end point
+                        );
+
+                        //BFS.i)Length of solution path returned
+                        if (shortestPath == null) {
+                            continue;
+                        }
+                        int pathLength = shortestPath.size();
+                        if (pathLength > 2.5 * maze.length) {  // this if controls loop termination
+                            hardest = maze;
+                            for (int i = 0; i < hardest.length; i++) {
+                                for (int j = 0; j < hardest[0].length; j++) {
+                                    System.out.print(hardest[i][j] + " ");
+                                }
+                                System.out.println();
                             }
-                            System.out.println();
+                            System.out.println("path length = " + pathLength + " ");
+                            for (SearchPathByBFS.Node e : shortestPath) {
+                                System.out.print(e.toString() + " ");
+                            }
+                            return;
                         }
-                        System.out.println("path length = " + pathLength + " ");
-                        for (SearchPathByBFS.Node e : shortestPath) {
-                            System.out.print(e.toString() + " ");
-                        }
-                        return;
+                        System.out.print("path length = " + pathLength + " ");
+                        System.out.println("epoch times: " + epoch++);
                     }
-                    System.out.print("path length = " + pathLength + " ");
-                    System.out.println("epoch times: " + epoch++);
                 }
             }
-        }
 
-        if(option == 2){
-            while (true) {
-                // evaluation function value(number of 1) for each maze
-                int[] EFArray = new int[mazeList.size()]; // evaluation function array record
-                // number of valid wall cell in each maze
-                for (int i = 0; i < EFArray.length; i++) {
-                    EFArray[i] = f(mazeList.get(i));
-                }
-                int totalNum = 0;
-                for (int num : EFArray) {
-                    totalNum += num;
-                }
-
-                // calculate selection probability of each maze and store them in probArray
-                double[] probArray = getProbArray(mazeList, EFArray, totalNum);
-
-                // get the selected mazes for reproduction
-                List<int[][]> selectedMazes = new ArrayList<>();
-                for (int i = 0; i < mazeList.size(); i++) {
-                    selectedMazes.add(selectedMaze(randomArray, i, probArray, mazeList));
-                }
-
-                // update maze list with selected mazes
-                mazeList.clear();
-                mazeList.addAll(selectedMazes);
-
-                // crossover
-                mazeList = crossover(mazeList);
-
-                // mutate
-                mutate(mazeList);
-
-                for (int[][] maze : mazeList) {
-                    if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
-                        System.out.println("Fail to construct hardest maze for cells cannot build a path.");
-                        return;
+            if (option == 2) {
+                while (true) {
+                    // evaluation function value(number of 1) for each maze
+                    int[] EFArray = new int[mazeList.size()]; // evaluation function array record
+                    // number of valid wall cell in each maze
+                    for (int i = 0; i < EFArray.length; i++) {
+                        EFArray[i] = f(mazeList.get(i));
                     }
-                    //try to find the harder in BFS
-                    SearchPathByBFS bfs = new SearchPathByBFS(maze);
-                    Queue<SearchPathByBFS.Node> shortestPath = new LinkedList<>();
-                    shortestPath = bfs.bfs(maze,                                   //set the maze
-                            bfs.setStart(0, 0),                            //set the start point
-                            bfs.setEnd(maze.length - 1, maze.length - 1)    //set the end point
-                    );
-                    if (shortestPath == null) {
-                        continue;
+                    int totalNum = 0;
+                    for (int num : EFArray) {
+                        totalNum += num;
                     }
-                    //BFS.ii)Total number of nodes expanded
-                    int expandedNodes = bfs.getExpandedNodes(bfs.marked);
-                    if (expandedNodes > Math.pow(maze.length, 1.85)) {  // this if controls loop termination
-                        hardest = maze;
-                        for (int i = 0; i < hardest.length; i++) {
-                            for (int j = 0; j < hardest[0].length; j++) {
-                                System.out.print(hardest[i][j] + " ");
+
+                    // calculate selection probability of each maze and store them in probArray
+                    double[] probArray = getProbArray(mazeList, EFArray, totalNum);
+
+                    // get the selected mazes for reproduction
+                    List<int[][]> selectedMazes = new ArrayList<>();
+                    for (int i = 0; i < mazeList.size(); i++) {
+                        selectedMazes.add(selectedMaze(randomArray, i, probArray, mazeList));
+                    }
+
+                    // update maze list with selected mazes
+                    mazeList.clear();
+                    mazeList.addAll(selectedMazes);
+
+                    // crossover
+                    mazeList = crossover(mazeList);
+
+                    // mutate
+                    mutate(mazeList);
+
+                    for (int[][] maze : mazeList) {
+                        if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
+                            System.out.println("Fail to construct hardest maze for cells cannot build a path.");
+                            return;
+                        }
+                        //try to find the harder in BFS
+                        SearchPathByBFS bfs = new SearchPathByBFS(maze);
+                        Queue<SearchPathByBFS.Node> shortestPath = new LinkedList<>();
+                        shortestPath = bfs.bfs(maze,                                   //set the maze
+                                bfs.setStart(0, 0),                            //set the start point
+                                bfs.setEnd(maze.length - 1, maze.length - 1)    //set the end point
+                        );
+                        if (shortestPath == null) {
+                            continue;
+                        }
+                        //BFS.ii)Total number of nodes expanded
+                        int expandedNodes = bfs.getExpandedNodes(bfs.marked);
+                        if (expandedNodes > Math.pow(maze.length, 1.85)) {  // this if controls loop termination
+                            hardest = maze;
+                            for (int i = 0; i < hardest.length; i++) {
+                                for (int j = 0; j < hardest[0].length; j++) {
+                                    System.out.print(hardest[i][j] + " ");
+                                }
+                                System.out.println();
                             }
-                            System.out.println();
-                        }
-                        for (SearchPathByBFS.Node e : shortestPath) {
-                            System.out.print(e.toString() + " ");
-                        }
+                            for (SearchPathByBFS.Node e : shortestPath) {
+                                System.out.print(e.toString() + " ");
+                            }
 
-                        System.out.println("\nThe total number of nodes expanded is: " + bfs.getExpandedNodes(bfs.marked));
-                        return ;
+                            System.out.println("\nThe total number of nodes expanded is: " + bfs.getExpandedNodes(bfs.marked));
+                            return;
+                        }
+                        System.out.print("The total number of nodes expanded  is: " + bfs.getExpandedNodes(bfs.marked) + " ");
+                        System.out.println("epoch times: " + epoch++);
                     }
-                    System.out.print("The total number of nodes expanded  is: " + bfs.getExpandedNodes(bfs.marked) + " ");
-                    System.out.println("epoch times: " + epoch++);
+
+
                 }
-
-
 
             }
 
-        }
-
-        if( option == 3){
-            while (true) {
-                // evaluation function value(number of 1) for each maze
-                int[] EFArray = new int[mazeList.size()]; // evaluation function array record
-                // number of valid wall cell in each maze
-                for (int i = 0; i < EFArray.length; i++) {
-                    EFArray[i] = f(mazeList.get(i));
-                }
-                int totalNum = 0;
-                for (int num : EFArray) {
-                    totalNum += num;
-                }
-
-                // calculate selection probability of each maze and store them in probArray
-                double[] probArray = getProbArray(mazeList, EFArray, totalNum);
-
-                // get the selected mazes for reproduction
-                List<int[][]> selectedMazes = new ArrayList<>();
-                for (int i = 0; i < mazeList.size(); i++) {
-                    selectedMazes.add(selectedMaze(randomArray, i, probArray, mazeList));
-                }
-
-                // update maze list with selected mazes
-                mazeList.clear();
-                mazeList.addAll(selectedMazes);
-
-                // crossover
-                mazeList = crossover(mazeList);
-
-                // mutate
-                mutate(mazeList);
-
-                //BFS.iii) Maximum size of fringe during runtime;
-                for (int[][] maze : mazeList) {
-                    if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
-                        System.out.println("Fail to construct hardest maze for cells cannot build a path.");
-                        return;
+            if (option == 3) {
+                while (true) {
+                    // evaluation function value(number of 1) for each maze
+                    int[] EFArray = new int[mazeList.size()]; // evaluation function array record
+                    // number of valid wall cell in each maze
+                    for (int i = 0; i < EFArray.length; i++) {
+                        EFArray[i] = f(mazeList.get(i));
                     }
-                    //try to find the harder in BFS
-                    SearchPathByBFS bfs = new SearchPathByBFS(maze);
-                    Queue<SearchPathByBFS.Node> shortestPath = new LinkedList<>();
-                    shortestPath = bfs.bfs(maze,                                   //set the maze
-                            bfs.setStart(0, 0),                            //set the start point
-                            bfs.setEnd(maze.length - 1, maze.length - 1)    //set the end point
-                    );
-                    if (shortestPath == null) {
-                        continue;
+                    int totalNum = 0;
+                    for (int num : EFArray) {
+                        totalNum += num;
                     }
-                    int MaxSizeOfFringe = bfs.getMaxSizeOfFringe(bfs.distTo);
-                    if (MaxSizeOfFringe >  Math.pow(maze.length, 1)) {  // this if controls loop termination
-                        hardest = maze;
-                        for (int i = 0; i < hardest.length; i++) {
-                            for (int j = 0; j < hardest[0].length; j++) {
-                                System.out.print(hardest[i][j] + " ");
+
+                    // calculate selection probability of each maze and store them in probArray
+                    double[] probArray = getProbArray(mazeList, EFArray, totalNum);
+
+                    // get the selected mazes for reproduction
+                    List<int[][]> selectedMazes = new ArrayList<>();
+                    for (int i = 0; i < mazeList.size(); i++) {
+                        selectedMazes.add(selectedMaze(randomArray, i, probArray, mazeList));
+                    }
+
+                    // update maze list with selected mazes
+                    mazeList.clear();
+                    mazeList.addAll(selectedMazes);
+
+                    // crossover
+                    mazeList = crossover(mazeList);
+
+                    // mutate
+                    mutate(mazeList);
+
+                    //BFS.iii) Maximum size of fringe during runtime;
+                    for (int[][] maze : mazeList) {
+                        if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
+                            System.out.println("Fail to construct hardest maze for cells cannot build a path.");
+                            return;
+                        }
+                        //try to find the harder in BFS
+                        SearchPathByBFS bfs = new SearchPathByBFS(maze);
+                        Queue<SearchPathByBFS.Node> shortestPath = new LinkedList<>();
+                        shortestPath = bfs.bfs(maze,                                   //set the maze
+                                bfs.setStart(0, 0),                            //set the start point
+                                bfs.setEnd(maze.length - 1, maze.length - 1)    //set the end point
+                        );
+                        if (shortestPath == null) {
+                            continue;
+                        }
+                        int MaxSizeOfFringe = bfs.getMaxSizeOfFringe(bfs.distTo);
+                        if (MaxSizeOfFringe > Math.pow(maze.length, 1)) {  // this if controls loop termination
+                            hardest = maze;
+                            for (int i = 0; i < hardest.length; i++) {
+                                for (int j = 0; j < hardest[0].length; j++) {
+                                    System.out.print(hardest[i][j] + " ");
+                                }
+                                System.out.println();
                             }
-                            System.out.println();
-                        }
-                        for (SearchPathByBFS.Node e : shortestPath) {
-                            System.out.print(e.toString() + " ");
-                        }
+                            for (SearchPathByBFS.Node e : shortestPath) {
+                                System.out.print(e.toString() + " ");
+                            }
 
-                        System.out.println("\nThe maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe(bfs.distTo));
-                        return;
+                            System.out.println("\nThe maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe(bfs.distTo));
+                            return;
+                        }
+                        System.out.print("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe(bfs.distTo) + " ");
+                        System.out.println("epoch times: " + epoch++);
                     }
-                    System.out.print("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe(bfs.distTo) + " ");
-                    System.out.println("epoch times: " + epoch++);
                 }
+            }
+
+            if(option == 4){
+                System.out.println("\nFunction has been terminated.");
+                break ;
             }
         }
     }
