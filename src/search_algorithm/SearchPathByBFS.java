@@ -18,6 +18,8 @@ public class SearchPathByBFS {
     public boolean[][] marked;
     //public int[][][] edgeTo;
     public int[][] distTo;
+    public int maxSizeOfFringe;
+    public int expandedNodesNumber;
 
     class Node {
         int x;
@@ -33,7 +35,11 @@ public class SearchPathByBFS {
             this.y = y;
             this.parent = parent;
         }
-    }
+        @Override
+        public String toString() {
+            return "(" + x + ", " + y + ")";
+         }
+     }
 
 
 
@@ -45,35 +51,13 @@ public class SearchPathByBFS {
     }
 
     // return the total number of nodes expanded
-    public int getExpandedNodes(boolean[][] marked){
-        int count = 0 ;
-        for(int i = 0; i<marked.length - 1; i++){
-            for(int j = 0; j < marked.length - 1;j++){
-                if(marked[i][j] == true){
-                    count++;
-                }
-            }
-        }
-        return count;
+    public int getExpandedNodes(){
+        return expandedNodesNumber;
     }
 
     //return the maximum size of fringe during runtime in BFS
-    public  int getMaxSizeOfFringe(int[][] distTo){
-        int[] count =new int[2*distTo.length];
-        for(int i = 0; i <distTo.length -1; i++){
-            for(int j = 0; j< distTo.length -1; j++){
-                if(distTo[i][j] <= 2*distTo.length -1){
-                    count[distTo[i][j]]++;
-                }
-            }
-        }
-        int maxSizeoOfFringe =0;
-        for(int i=0; i< count.length - 1 ;i++){
-            if(maxSizeoOfFringe < count[i]){
-                maxSizeoOfFringe = count[i];
-            }
-        }
-        return maxSizeoOfFringe;
+    public  int getMaxSizeOfFringe(){
+        return maxSizeOfFringe;
     }
 
     //return the length of solution path
@@ -82,7 +66,9 @@ public class SearchPathByBFS {
     }
 
     public Queue<Node> bfs(int[][] maze, Node start, Node end){
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<Node> fringe = new LinkedList<>();
+        Queue<Node> expandedNodes = new LinkedList<>();
+
         marked = new boolean[maze.length][maze.length];
         distTo = new int[maze.length][maze.length];
 
@@ -94,10 +80,17 @@ public class SearchPathByBFS {
         }
         distTo[start.x][start.y] = 0;
         marked[start.x][start.y] = true;
-        queue.add(start);
+        fringe.add(start);
 
-        while(!queue.isEmpty()) {
-            Node v = queue.poll();
+        while(!fringe.isEmpty()) {
+
+            maxSizeOfFringe = Math.max(maxSizeOfFringe, fringe.size());
+
+            Node v = fringe.poll();
+            expandedNodes.add(v);
+
+            expandedNodesNumber = expandedNodes.size();
+
             for (Node w : getAdjacentNotmarkedNode(v, marked, maze)) {
                 if(!marked[w.x][w.y]){
                     w.parent = v;
@@ -105,10 +98,11 @@ public class SearchPathByBFS {
                     marked[w.x][w.y] =true;
                     if((w.x == end.x) && (w.y == end.y)){
                         end = w;
+                        break;
                     }
-                    queue.add(w);
-                }
+                    fringe.add(w);
 
+                }
             }
         }
 
@@ -234,8 +228,8 @@ public class SearchPathByBFS {
         if(shortestPath != null) {
             int pathLength = bfs.getPathLength(shortestPath);
             System.out.println("The length of solution path is: " + pathLength);
-            System.out.println("The total number of nodes expanded is: " + bfs.getExpandedNodes(bfs.marked));
-            System.out.println("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe(bfs.distTo));
+            System.out.println("The total number of nodes expanded is: " + bfs.getExpandedNodes() );
+            System.out.println("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe() );
             outputMaze(maze, shortestPath);
         }
         else{

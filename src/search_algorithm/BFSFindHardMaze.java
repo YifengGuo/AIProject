@@ -390,7 +390,7 @@ public class BFSFindHardMaze {
                             continue;
                         }
                         //BFS.ii)Total number of nodes expanded
-                        int expandedNodes = bfs.getExpandedNodes(bfs.marked);
+                        int expandedNodes = bfs.getExpandedNodes();
                         if (expandedNodes > Math.pow(maze.length, 1.85)) {  // this if controls loop termination
                             hardest = maze;
                             for (int i = 0; i < hardest.length; i++) {
@@ -403,10 +403,10 @@ public class BFSFindHardMaze {
                                 System.out.print(e.toString() + " ");
                             }
 
-                            System.out.println("\nThe total number of nodes expanded is: " + bfs.getExpandedNodes(bfs.marked));
+                            System.out.println("\nThe total number of nodes expanded is: " + bfs.getExpandedNodes());
                             return;
                         }
-                        System.out.print("The total number of nodes expanded  is: " + bfs.getExpandedNodes(bfs.marked) + " ");
+                        System.out.print("The total number of nodes expanded  is: " + bfs.getExpandedNodes() + " ");
                         System.out.println("epoch times: " + epoch++);
                     }
 
@@ -463,8 +463,8 @@ public class BFSFindHardMaze {
                         if (shortestPath == null) {
                             continue;
                         }
-                        int MaxSizeOfFringe = bfs.getMaxSizeOfFringe(bfs.distTo);
-                        if (MaxSizeOfFringe > Math.pow(maze.length, 1)) {  // this if controls loop termination
+                        int MaxSizeOfFringe = bfs.getMaxSizeOfFringe();
+                        if (MaxSizeOfFringe > Math.pow(maze.length, 1.2)) {  // this if controls loop termination
                             hardest = maze;
                             for (int i = 0; i < hardest.length; i++) {
                                 for (int j = 0; j < hardest[0].length; j++) {
@@ -476,10 +476,10 @@ public class BFSFindHardMaze {
                                 System.out.print(e.toString() + " ");
                             }
 
-                            System.out.println("\nThe maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe(bfs.distTo));
+                            System.out.println("\nThe maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe());
                             return;
                         }
-                        System.out.print("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe(bfs.distTo) + " ");
+                        System.out.print("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe() + " ");
                         System.out.println("epoch times: " + epoch++);
                     }
                 }
