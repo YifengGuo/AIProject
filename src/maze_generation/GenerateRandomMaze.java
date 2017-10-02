@@ -6,11 +6,12 @@ import java.util.Random;
  * @author yifengguo
  */
 public class GenerateRandomMaze {
-    private final static int dim = 15;
+    private final static int dim = 100;
     private final static double p0 = 0.0;
     private final static double p1 = 0.1;
     private final static double p2 = 0.3;
-    private final static double p3 = 0.5;
+    private final static double p3 = 0.4;
+    private final static double p4 = 0.5;
 
     public int[][] genereate() {
         int[][] maze = new int[dim][dim];
@@ -18,7 +19,7 @@ public class GenerateRandomMaze {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 double p = rand.nextDouble(); // 0.0 - 1.0
-                if (p >= p2) {  // change wall occurrence probability
+                if (p >= p3) {  // change wall occurrence probability
                     maze[i][j] = 1; // path
                 } else {
                     maze[i][j] = 0; // wall
