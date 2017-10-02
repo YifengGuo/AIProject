@@ -296,7 +296,7 @@ public class GeneticAlgorithmScalar {
 
             // mutate
             mutate(mazeList);
-/*
+
             for (int[][] maze : mazeList) {
                 if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
                     System.out.println("Fail to construct hardest maze for cells cannot build a path.");
@@ -320,9 +320,9 @@ public class GeneticAlgorithmScalar {
                     return;
                 }
                 System.out.print("path length = " + pathLength + " ");
-                System.out.println("epoch times: " + epoch++);
+                System.out.println("epoch times: " + epoch);
             }
- */
+            epoch++;
 
 /*
             //ii)
@@ -357,12 +357,13 @@ public class GeneticAlgorithmScalar {
                     return;
                 }
                 System.out.print("expanded nodes = " + visitedCount + " ");
-                System.out.println("epoch times: " + epoch++);
+                System.out.println("epoch times: " + epoch);
             }
+            epoch++;
 
 */
             //iii)
-
+/*
                  for (int[][] maze : mazeList) {
                 if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
                     System.out.println("Fail to construct hardest maze for cells cannot build a path.");
@@ -386,10 +387,10 @@ public class GeneticAlgorithmScalar {
                     return;
                 }
                 System.out.print("Maximum size of the fringe = " + maxFringe + " ");
-                System.out.println("epoch times: " + epoch++);
+                System.out.println("epoch times: " + epoch);
             }
-
-
+            epoch++;
+*/
         }
     }
 }

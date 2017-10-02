@@ -330,15 +330,16 @@ public class BFSFindHardMaze {
                                 }
                                 System.out.println();
                             }
-                            System.out.println("path length = " + pathLength + " ");
+                            System.out.println("path length = " + pathLength + " " + ".\tPercentage of the Valid Path Cell Number: "+ (100 * getValidPathCellNumber(maze) ) / (maze.length *maze.length) +"%\t");
                             for (SearchPathByBFS.Node e : shortestPath) {
                                 System.out.print(e.toString() + " ");
                             }
                             return;
                         }
-                        System.out.print("path length = " + pathLength + " ");
-                        System.out.println("epoch times: " + epoch++);
+                        System.out.print("path length = " + pathLength + ".\tPercentage of the Valid Path Cell Number: "+ (100 * getValidPathCellNumber(maze) ) / (maze.length *maze.length) +"%\t");
+                        System.out.println("epoch times: " + epoch);
                     }
+                    epoch++;
                 }
             }
 
@@ -407,9 +408,9 @@ public class BFSFindHardMaze {
                             return;
                         }
                         System.out.print("The total number of nodes expanded  is: " + bfs.getExpandedNodes() + " ");
-                        System.out.println("epoch times: " + epoch++);
+                        System.out.println("epoch times: " + epoch);
                     }
-
+                    epoch++;
 
                 }
 
@@ -480,8 +481,9 @@ public class BFSFindHardMaze {
                             return;
                         }
                         System.out.print("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe() + " ");
-                        System.out.println("epoch times: " + epoch++);
+                        System.out.println("epoch times: " + epoch);
                     }
+                    epoch++;
                 }
             }
 
