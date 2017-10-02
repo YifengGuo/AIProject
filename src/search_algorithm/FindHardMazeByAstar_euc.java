@@ -15,7 +15,7 @@ import java.util.Random;
  *
  */
 @SuppressWarnings("Duplicates")
-public class FindHardMazeByAstar {
+public class FindHardMazeByAstar_euc {
     // control how many mazes shall be generated for genetic algorithm
     public static final int mazeCount = 200;
     // Random Number for Selection with 2-bit accuracy
