@@ -101,7 +101,7 @@ public class SearchPathByShortestDFS {
         stack.offerFirst(start);  // push start
         visitedDist[start.x][start.y] = 1;
 
-        maxFringeSize = 0;
+        maxFringeSize = 1;
         expandedNodes = 1;
 
         while (!stack.isEmpty()) {  // stack is empty means cannot find shorter path
@@ -113,11 +113,6 @@ public class SearchPathByShortestDFS {
             if (next.equals(end)) {  // find a path with shorter path length than historical shortest path
                 visitedDist[next.x][next.y] = visitedDist[stack.peekFirst().x][stack.peekFirst().y] + 1;  // update end to start shortest distance
                 stack.offerFirst(next);
-
-                if(stack.size() > getMaxFringeSize()){   // this stack stores the fringe nodes, and can get the largest size of stack
-                    setMaxFringeSize(stack.size());
-                }
-
                 shortestPath.clear();
                 Deque<Entry> temp = new LinkedList<>();
                 temp.addAll(stack);
@@ -131,6 +126,9 @@ public class SearchPathByShortestDFS {
             // if current entry is not end but also is a valid path, push it into stack and update its distance from start
             visitedDist[next.x][next.y] = visitedDist[stack.peekFirst().x][stack.peekFirst().y] + 1;
             stack.offerFirst(next);
+            if(stack.size() > getMaxFringeSize()){   // this stack stores the fringe nodes, and can get the largest size of stack
+                setMaxFringeSize(stack.size());
+            }
         }
     }
 
