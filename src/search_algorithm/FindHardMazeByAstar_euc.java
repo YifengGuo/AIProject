@@ -322,6 +322,8 @@ public class FindHardMazeByAstar_euc {
                      for (SearchPathByAstar_Euclidean.Entry e : path) {
                          System.out.print(e.toString() + " ");
                      }
+                     SearchPathByAstar_Euclidean.outputMaze(hardest, path);
+                     SearchPathByAstar_Euclidean.outputPath(path);
                      return;
                  }
                 // for condition 2: Total number of nodes expanded
@@ -360,8 +362,7 @@ public class FindHardMazeByAstar_euc {
 //                    }
 //                    return;
 //                }
-                SearchPathByAstar_Euclidean.outputMaze(hardest, path);
-                SearchPathByAstar_Euclidean.outputPath(path);
+
                 System.out.print("path length = " + pathLength + " ");
                 System.out.println("epoch times: " + epoch);
             }
