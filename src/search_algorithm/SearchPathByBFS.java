@@ -81,16 +81,11 @@ public class SearchPathByBFS {
         distTo[start.x][start.y] = 0;
         marked[start.x][start.y] = true;
         fringe.add(start);
+        maxSizeOfFringe = 1;//the start is in the fringe
 
         while(!fringe.isEmpty()) {
-
             maxSizeOfFringe = Math.max(maxSizeOfFringe, fringe.size());
-
             Node v = fringe.poll();
-            expandedNodes.add(v);
-
-            expandedNodesNumber = expandedNodes.size();
-
             for (Node w : getAdjacentNotmarkedNode(v, marked, maze)) {
                 if(!marked[w.x][w.y]){
                     w.parent = v;
@@ -101,9 +96,10 @@ public class SearchPathByBFS {
                         break;
                     }
                     fringe.add(w);
-
                 }
             }
+            expandedNodes.add(v);
+            expandedNodesNumber = expandedNodes.size();
         }
 
         if(!hasPath(end)){
