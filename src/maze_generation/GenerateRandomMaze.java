@@ -13,7 +13,7 @@ public class GenerateRandomMaze {
     private final static double p3 = 0.4;
     private final static double p4 = 0.5;
 
-    public int[][] genereate() {
+    public int[][] generate() {
         int[][] maze = new int[dim][dim];
         Random rand = new Random();
         for (int i = 0; i < dim; i++) {
@@ -33,7 +33,7 @@ public class GenerateRandomMaze {
     }
 
     public static void main(String[] args) {
-        int[][] maze = new GenerateRandomMaze().genereate();
+        int[][] maze = new GenerateRandomMaze().generate();
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 System.out.print(maze[i][j] + " ");

@@ -234,7 +234,7 @@ public class SearchPathByShortestDFS {
     }
 
     public static void main(String[] args) {
-        int[][] maze = new GenerateRandomMaze().genereate();
+        int[][] maze = new GenerateRandomMaze().generate();
         int[][] weightedMaze = getWeightedMaze(maze);
         SearchPathByShortestDFS dfsClass = new SearchPathByShortestDFS();
         List<Entry> res = dfsClass.getPath(weightedMaze);

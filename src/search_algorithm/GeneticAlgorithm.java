@@ -104,10 +104,10 @@ public class GeneticAlgorithm {
 
     private static List<int[][]> getMazeList() {
         List<int[][]> mazeList = new ArrayList<>();
-        int[][] maze1 = new GenerateRandomMaze().genereate();
-        int[][] maze2 = new GenerateRandomMaze().genereate();
-        int[][] maze3 = new GenerateRandomMaze().genereate();
-        int[][] maze4 = new GenerateRandomMaze().genereate();
+        int[][] maze1 = new GenerateRandomMaze().generate();
+        int[][] maze2 = new GenerateRandomMaze().generate();
+        int[][] maze3 = new GenerateRandomMaze().generate();
+        int[][] maze4 = new GenerateRandomMaze().generate();
         mazeList.add(maze1);
         mazeList.add(maze2);
         mazeList.add(maze3);

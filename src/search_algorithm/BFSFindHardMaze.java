@@ -95,7 +95,7 @@ public class BFSFindHardMaze {
         List<int[][]> mazeList = new ArrayList<>();
         GenerateRandomMaze mazeGenerator = new GenerateRandomMaze();
         for (int i = 0; i < n; i++) {
-            mazeList.add(mazeGenerator.genereate());
+            mazeList.add(mazeGenerator.generate());
         }
         return mazeList;
     }

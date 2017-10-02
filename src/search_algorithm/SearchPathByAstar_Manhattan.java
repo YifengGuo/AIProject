@@ -271,7 +271,7 @@ public class SearchPathByAstar_Manhattan {
     }
 
     public static void main(String[] args) {
-        int[][] maze = new GenerateRandomMaze().genereate();
+        int[][] maze = new GenerateRandomMaze().generate();
         // print maze
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze.length; j++) {

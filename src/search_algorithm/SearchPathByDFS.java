@@ -176,7 +176,7 @@ public class SearchPathByDFS {
     }
 
     public static void main(String[] args) {
-        int[][] maze = new GenerateRandomMaze().genereate();
+        int[][] maze = new GenerateRandomMaze().generate();
         List<Entry> res = new SearchPathByDFS().getPath(maze);
         // print maze
         for (int i = 0; i < maze.length; i++) {
