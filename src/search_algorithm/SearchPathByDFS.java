@@ -55,7 +55,9 @@ public class SearchPathByDFS {
             return result;
         }
     }
-
+    public static int expandedNodes = 0;
+    public static int solutionPathLength = 0;
+    public static int maxFringeSize = 0;
     public List<Entry> getPath(int[][] maze) {
         List<Entry> res = new ArrayList<>();
         if (maze == null || maze.length == 0 || maze[0].length == 0) {
@@ -71,6 +73,7 @@ public class SearchPathByDFS {
         while (!path.isEmpty()) {
             res.add(path.pollFirst());
         }
+        solutionPathLength = res.size();
         // track visited matrix
         for (int i = 0; i < visited.length; i++) {
             for (int j = 0; j < visited.length; j++) {
@@ -86,9 +89,11 @@ public class SearchPathByDFS {
         stack.offerFirst(start);
         visited[start.x][start.y] = true;
         while (!stack.isEmpty() && (!stack.peekFirst().equals(end))) {
+            maxFringeSize = Math.max(maxFringeSize, stack.size());
             Entry next = getAdjacentNotVisitedEntry(stack.peekFirst(), visited, maze);
             if (next.x != -1) {
                 visited[next.x][next.y] = true;
+                expandedNodes++;
                 stack.offerFirst(next);
             } else {  // backtracking if current stack.peek() has no choice to go
                 stack.pop();
@@ -194,6 +199,10 @@ public class SearchPathByDFS {
         for (Entry e : res) {
             System.out.print(e.toString() + " ");
         }
+
+        System.out.println("\nSolution path: " +solutionPathLength+" ");
+        System.out.println("Expanded Nodes: " +expandedNodes+" ");
+        System.out.println("Max Fringe Size: " +maxFringeSize+" ");
         // path visualization
         outputMaze(maze, res);
         outputPath(res);
