@@ -207,7 +207,7 @@ public class SearchPathByAstar_Euclidean {
     	h = Math.sqrt((end.x - start.x) * (end.x - start.x) + (end.y - start.y) * (end.y - start.y));
     	return g + h;
     }
-    private static void outputMaze(int[][] maze, List<Entry> list) {
+    public static void outputMaze(int[][] maze, List<Entry> list) {
         File file = new File("src/data_visualization/Astar/Astar_euc_maze_shortest.csv");
         BufferedWriter bw = null;
         // change path cell to 2
@@ -239,7 +239,7 @@ public class SearchPathByAstar_Euclidean {
         }
     }
 
-    private static void outputPath(List<Entry> list) {
+    public static void outputPath(List<Entry> list) {
         File file = new File("src/data_visualization/Astar/Astar_euc_path_shortest.csv");
         BufferedWriter bw = null;
         try {
