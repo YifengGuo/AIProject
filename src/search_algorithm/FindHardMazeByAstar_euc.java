@@ -362,8 +362,9 @@ public class FindHardMazeByAstar_euc {
                 }
                 
                 System.out.print("path length = " + pathLength + " ");
-                System.out.println("epoch times: " + epoch++);
+                System.out.println("epoch times: " + epoch);
             }
+            epoch++;
         }
     }
 }
