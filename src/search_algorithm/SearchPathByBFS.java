@@ -86,6 +86,11 @@ public class SearchPathByBFS {
         while(!fringe.isEmpty()) {
             maxSizeOfFringe = Math.max(maxSizeOfFringe, fringe.size());
             Node v = fringe.poll();
+            //check whether the node is the goal node
+            if( (v.x == end.x) && (v.y == end.y) ){
+                marked[v.x][v.y] = true;
+                break;
+            }
             for (Node w : getAdjacentNotmarkedNode(v, marked, maze)) {
                 if(!marked[w.x][w.y]){
                     w.parent = v;
