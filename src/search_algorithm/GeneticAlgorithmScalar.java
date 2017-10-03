@@ -2,6 +2,10 @@ package search_algorithm;
 
 import maze_generation.GenerateRandomMaze;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,6 +27,7 @@ public class GeneticAlgorithmScalar {
 
     // n random mazes in list format and store in an ArrayList
     public static List<int[][]> mazeList = getMazeList(mazeCount); // list contains n random generated mazes
+
 
     /*
      * calculate number of path of mazes for evaluation function
@@ -260,6 +265,47 @@ public class GeneticAlgorithmScalar {
         return probArray;
     }
 
+    /**
+     * output hardest maze to do the visualization
+     * @param maze
+     * @param list
+     */
+    private static void outputMaze(int[][] maze, List<SearchPathByShortestDFS.Entry> list) {
+        // longest solution path
+        // File file = new File("src/data_visualization/Q10/DFS_shortest/LongestSolutionPath.csv");
+        // most expanded nodes
+        //File file = new File("src/data_visualization/Q10/DFS_shortest/MostExpandedNodes.csv");
+        // max fringe size
+        File file = new File("src/data_visualization/Q10/DFS_shortest/MaxFringeSize.csv");
+        BufferedWriter bw = null;
+        for (SearchPathByShortestDFS.Entry e : list) {
+            maze[e.x][e.y] = 2;
+        }
+        try {
+            bw = new BufferedWriter(new FileWriter(file));
+            for (int i = 0; i < maze.length; i++) {
+                for (int j = 0; j < maze.length; j++) {
+                    if (j != maze.length - 1) {
+                        bw.write(maze[i][j] + ",");
+                    } else {
+                        bw.write(maze[i][j]+ "");
+                    }
+                }
+                bw.write("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         int[][] hardest;
@@ -319,6 +365,10 @@ public class GeneticAlgorithmScalar {
 //                        }
 //                        System.out.println();
 //                    }
+//
+//                    // output maze for visualization
+//                    outputMaze(hardest, path);
+//
 //                    System.out.println("path length = " + pathLength + " ");
 //                    for (SearchPathByShortestDFS.Entry e : path) {
 //                        System.out.print(e.toString() + " ");
@@ -350,7 +400,7 @@ public class GeneticAlgorithmScalar {
 //                    }
 //                }
 //                mostExpandedNodesSoFar = Math.max(visitedCount, mostExpandedNodesSoFar);
-//                if (visitedCount > Math.pow(maze.length, 1.85)) {  // this if controls loop termination
+//                if (visitedCount > Math.pow(maze.length, 1.8) && !path.isEmpty()) {  // this if controls loop termination
 //                    hardest = maze;
 //                    for (int i = 0; i < hardest.length; i++) {
 //                        for (int j = 0; j < hardest[0].length; j++) {
@@ -362,6 +412,8 @@ public class GeneticAlgorithmScalar {
 //                    for (SearchPathByShortestDFS.Entry e : path) {
 //                        System.out.print(e.toString() + " ");
 //                    }
+//                    // output maze for visualization
+//                    outputMaze(hardest, path);
 //                    return;
 //                }
 //                System.out.print("expanded nodes = " + visitedCount + " ");
@@ -381,7 +433,7 @@ public class GeneticAlgorithmScalar {
                 List<SearchPathByShortestDFS.Entry> path = dfs.getPath(weightedMaze);
                 int maxFringe = dfs.getMaxFringeSize();
                 maxFringeSizeSoFar = Math.max(maxFringe, maxFringeSizeSoFar);
-                if (maxFringe > 3.4 * 3 * maze.length) {  // this if controls loop termination
+                if (maxFringe > 3.2 * 3 * maze.length && !path.isEmpty()) {  // this if controls loop termination
                     hardest = maze;
                     for (int i = 0; i < hardest.length; i++) {
                         for (int j = 0; j < hardest[0].length; j++) {
@@ -393,6 +445,8 @@ public class GeneticAlgorithmScalar {
                     for (SearchPathByShortestDFS.Entry e : path) {
                         System.out.print(e.toString() + " ");
                     }
+                    // output maze for visualization
+                    outputMaze(hardest, path);
                     return;
                 }
                 System.out.print("Maximum size of the fringe = " + maxFringe + " ");
