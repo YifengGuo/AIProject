@@ -2,6 +2,10 @@ package search_algorithm;
 
 import maze_generation.GenerateRandomMaze;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -258,7 +262,41 @@ public class BFSFindHardMaze {
         return probArray;
     }
 
-
+    public static void outputMaze(int[][] maze, Queue<SearchPathByBFS.Node> queue, String name) {
+        File file = new File("src/data_visualization/BFS10/bfs_maze_shortest_"+name+".csv");
+        BufferedWriter bw = null;
+        // change path cell to 2
+        while(!queue.isEmpty()){
+            SearchPathByBFS.Node e = queue.poll();
+            System.out.print("( "+e.x+" , "+e.y+" ) ");
+            maze[e.x][e.y] = 2;
+        }
+        try {
+            bw = new BufferedWriter(new FileWriter(file));
+            for (int i = 0; i < maze.length; i++) {
+                for (int j = 0; j < maze.length; j++) {
+                    if (j != maze.length - 1) {
+                        bw.write(maze[i][j] + ",");
+                    } else {
+                        bw.write(maze[i][j]+ "");
+                    }
+                }
+                bw.write("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    
     public static void main(String[] args) {
 
         while(true) {
@@ -322,7 +360,7 @@ public class BFSFindHardMaze {
                             continue;
                         }
                         int pathLength = shortestPath.size();
-                        if (pathLength > 2.5 * maze.length) {  // this if controls loop termination
+                        if (pathLength > 3.0 * maze.length) {  // this if controls loop termination
                             hardest = maze;
                             for (int i = 0; i < hardest.length; i++) {
                                 for (int j = 0; j < hardest[0].length; j++) {
@@ -334,6 +372,7 @@ public class BFSFindHardMaze {
                             for (SearchPathByBFS.Node e : shortestPath) {
                                 System.out.print(e.toString() + " ");
                             }
+                            outputMaze(maze, shortestPath,"Q10_i)");
                             return;
                         }
                         System.out.print("path length = " + pathLength + ".\tPercentage of the Valid Path Cell Number: "+ (100 * getValidPathCellNumber(maze) ) / (maze.length *maze.length) +"%\t");
@@ -405,6 +444,7 @@ public class BFSFindHardMaze {
                             }
 
                             System.out.println("\nThe total number of nodes expanded is: " + bfs.getExpandedNodes());
+                            outputMaze(maze, shortestPath,"Q10_ii)");
                             return;
                         }
                         System.out.print("The total number of nodes expanded  is: " + bfs.getExpandedNodes() + " ");
@@ -465,7 +505,7 @@ public class BFSFindHardMaze {
                             continue;
                         }
                         int MaxSizeOfFringe = bfs.getMaxSizeOfFringe();
-                        if (MaxSizeOfFringe > Math.pow(maze.length, 1.2)) {  // this if controls loop termination
+                        if (MaxSizeOfFringe >=  1.1 * maze.length) {  // this if controls loop termination
                             hardest = maze;
                             for (int i = 0; i < hardest.length; i++) {
                                 for (int j = 0; j < hardest[0].length; j++) {
@@ -478,6 +518,7 @@ public class BFSFindHardMaze {
                             }
 
                             System.out.println("\nThe maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe());
+                           outputMaze(maze, shortestPath,"Q10_iii)");
                             return;
                         }
                         System.out.print("The maximum size of fringe during runtime is: " + bfs.getMaxSizeOfFringe() + " ");
