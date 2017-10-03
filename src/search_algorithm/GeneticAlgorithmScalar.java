@@ -302,34 +302,34 @@ public class GeneticAlgorithmScalar {
 
             // i) solution path length
 
-            for (int[][] maze : mazeList) {
-                if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
-                    System.out.println("Fail to construct hardest maze for cells cannot build a path.");
-                    return;
-                }
-                int[][] weightedMaze = getWeightedMaze(maze);
-                List<SearchPathByShortestDFS.Entry> path = dfs.getPath(weightedMaze);
-                int pathLength = path.size();
-                longestSoFar = Math.max(pathLength, longestSoFar);
-                if (pathLength > 2.5 * maze.length) {  // this if controls loop termination
-                    hardest = maze;
-                    for (int i = 0; i < hardest.length; i++) {
-                        for (int j = 0; j < hardest[0].length; j++) {
-                            System.out.print(hardest[i][j] + " ");
-                        }
-                        System.out.println();
-                    }
-                    System.out.println("path length = " + pathLength + " ");
-                    for (SearchPathByShortestDFS.Entry e : path) {
-                        System.out.print(e.toString() + " ");
-                    }
-                    return;
-                }
-                System.out.print("path length = " + pathLength + " ");
-                System.out.print("epoch times: " + epoch + " ");
-                System.out.println("Longest Path So Far: " + longestSoFar );
-            }
-            epoch++;
+//            for (int[][] maze : mazeList) {
+//                if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
+//                    System.out.println("Fail to construct hardest maze for cells cannot build a path.");
+//                    return;
+//                }
+//                int[][] weightedMaze = getWeightedMaze(maze);
+//                List<SearchPathByShortestDFS.Entry> path = dfs.getPath(weightedMaze);
+//                int pathLength = path.size();
+//                longestSoFar = Math.max(pathLength, longestSoFar);
+//                if (pathLength > 3 * maze.length) {  // this if controls loop termination
+//                    hardest = maze;
+//                    for (int i = 0; i < hardest.length; i++) {
+//                        for (int j = 0; j < hardest[0].length; j++) {
+//                            System.out.print(hardest[i][j] + " ");
+//                        }
+//                        System.out.println();
+//                    }
+//                    System.out.println("path length = " + pathLength + " ");
+//                    for (SearchPathByShortestDFS.Entry e : path) {
+//                        System.out.print(e.toString() + " ");
+//                    }
+//                    return;
+//                }
+//                System.out.print("path length = " + pathLength + " ");
+//                System.out.print("epoch times: " + epoch + " ");
+//                System.out.println("Longest Path So Far: " + longestSoFar );
+//            }
+//            epoch++;
 
 
             // ii) expanded nodes
@@ -371,35 +371,35 @@ public class GeneticAlgorithmScalar {
 //            epoch++;
 
             // iii) max fringe size
-//
-//            for (int[][] maze : mazeList) {
-//                if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
-//                    System.out.println("Fail to construct hardest maze for cells cannot build a path.");
-//                    return;
-//                }
-//                int[][] weightedMaze = getWeightedMaze(maze);
-//                List<SearchPathByShortestDFS.Entry> path = dfs.getPath(weightedMaze);
-//                int maxFringe = dfs.getMaxFringeSize();
-//                maxFringeSizeSoFar = Math.max(maxFringe, maxFringeSizeSoFar);
-//                if (maxFringe > 2.7 * 2.5 * maze.length) {  // this if controls loop termination
-//                    hardest = maze;
-//                    for (int i = 0; i < hardest.length; i++) {
-//                        for (int j = 0; j < hardest[0].length; j++) {
-//                            System.out.print(hardest[i][j] + " ");
-//                        }
-//                        System.out.println();
-//                    }
-//                    System.out.println("Maximum size of the fringe = " + maxFringe + " ");
-//                    for (SearchPathByShortestDFS.Entry e : path) {
-//                        System.out.print(e.toString() + " ");
-//                    }
-//                    return;
-//                }
-//                System.out.print("Maximum size of the fringe = " + maxFringe + " ");
-//                System.out.print("epoch times: " + epoch + " ");
-//                System.out.println("Max Fringe Size So Far: " + maxFringeSizeSoFar);
-//            }
-//            epoch++;
+
+            for (int[][] maze : mazeList) {
+                if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
+                    System.out.println("Fail to construct hardest maze for cells cannot build a path.");
+                    return;
+                }
+                int[][] weightedMaze = getWeightedMaze(maze);
+                List<SearchPathByShortestDFS.Entry> path = dfs.getPath(weightedMaze);
+                int maxFringe = dfs.getMaxFringeSize();
+                maxFringeSizeSoFar = Math.max(maxFringe, maxFringeSizeSoFar);
+                if (maxFringe > 3.4 * 3 * maze.length) {  // this if controls loop termination
+                    hardest = maze;
+                    for (int i = 0; i < hardest.length; i++) {
+                        for (int j = 0; j < hardest[0].length; j++) {
+                            System.out.print(hardest[i][j] + " ");
+                        }
+                        System.out.println();
+                    }
+                    System.out.println("Maximum size of the fringe = " + maxFringe + " ");
+                    for (SearchPathByShortestDFS.Entry e : path) {
+                        System.out.print(e.toString() + " ");
+                    }
+                    return;
+                }
+                System.out.print("Maximum size of the fringe = " + maxFringe + " ");
+                System.out.print("epoch times: " + epoch + " ");
+                System.out.println("Max Fringe Size So Far: " + maxFringeSizeSoFar);
+            }
+            epoch++;
 
         }
     }

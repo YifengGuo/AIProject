@@ -1,6 +1,7 @@
 package search_algorithm;
 
 import maze_generation.GenerateRandomMaze;
+import maze_generation.MazeForQ2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -234,7 +235,8 @@ public class SearchPathByShortestDFS {
     }
 
     public static void main(String[] args) {
-        int[][] maze = new GenerateRandomMaze().generate();
+        //int[][] maze = new GenerateRandomMaze().generate();
+        int[][] maze = new MazeForQ2().mazeForQ2;
         int[][] weightedMaze = getWeightedMaze(maze);
         SearchPathByShortestDFS dfsClass = new SearchPathByShortestDFS();
         List<Entry> res = dfsClass.getPath(weightedMaze);
