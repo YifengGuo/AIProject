@@ -361,8 +361,9 @@ public class FindHardMazeByAstar_man {
                 }
                 
                 System.out.print("path length = " + pathLength + " ");
-                System.out.println("epoch times: " + epoch++);
+                System.out.println("epoch times: " + epoch);
             }
+            epoch++;
         }
     }
 }

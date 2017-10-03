@@ -262,7 +262,7 @@ public class FindHardMazeByAstar_euc {
 
 
     public static void main(String[] args) {
-        int[][] hardest;
+//        int[][] hardest;
         // SearchPathByShortestDFS dfs = new SearchPathByShortestDFS();
         SearchPathByAstar_Euclidean astar = new SearchPathByAstar_Euclidean();
         int epoch = 0;
@@ -297,7 +297,7 @@ public class FindHardMazeByAstar_euc {
 
             // mutate
             mutate(mazeList);
-
+            int[][] hardest = new int[mazeList.get(0).length][mazeList.get(0).length];
             for (int[][] maze : mazeList) {
                 if (getValidPathCellNumber(maze) < 2 * maze.length - 1) {
                     System.out.println("Fail to construct hardest maze for cells cannot build a path.");
@@ -309,21 +309,23 @@ public class FindHardMazeByAstar_euc {
                 List<SearchPathByAstar_Euclidean.Entry> path = astar.getPath(maze, start, end);
 //                System.out.println(path);
                 // for condition 1: path length
-                // int pathLength = path.size();
-                // if (pathLength > 2.5 * maze.length) {  // this if controls loop termination
-                //     hardest = maze;
-                //     for (int i = 0; i < hardest.length; i++) {
-                //         for (int j = 0; j < hardest[0].length; j++) {
-                //             System.out.print(hardest[i][j] + " ");
-                //         }
-                //         System.out.println();
-                //     }
-                //     System.out.println("path length = " + pathLength + " ");
-                //     for (SearchPathByAstar_Euclidean.Entry e : path) {
-                //         System.out.print(e.toString() + " ");
-                //     }
-                //     return;
-                // }
+                 int pathLength = path.size();
+                 if (pathLength > 2.5 * maze.length) {  // this if controls loop termination
+                     hardest = maze;
+                     for (int i = 0; i < hardest.length; i++) {
+                         for (int j = 0; j < hardest[0].length; j++) {
+                             System.out.print(hardest[i][j] + " ");
+                         }
+                         System.out.println();
+                     }
+                     System.out.println("path length = " + pathLength + " ");
+                     for (SearchPathByAstar_Euclidean.Entry e : path) {
+                         System.out.print(e.toString() + " ");
+                     }
+                     SearchPathByAstar_Euclidean.outputMaze(hardest, path);
+                     SearchPathByAstar_Euclidean.outputPath(path);
+                     return;
+                 }
                 // for condition 2: Total number of nodes expanded
                 // int fringeSize = astar.getExpandedNodes();
                 // int pathLength = path.size();
@@ -343,27 +345,28 @@ public class FindHardMazeByAstar_euc {
                 //     return;
                 // }
                 // for condition 3: Maximum size of fringe during runtime
-                int fringeSize = astar.getMaxSizeOfFringe();
-                int pathLength = path.size();
-                if (fringeSize > maze.length && pathLength > 0) {
-                    hardest = maze;
-                    for (int i = 0; i < hardest.length; i++) {
-                        for (int j = 0; j < hardest[0].length; j++) {
-                            System.out.print(hardest[i][j] + " ");
-                        }
-                        System.out.println();
-                    }
-                    System.out.println("path length = " + pathLength + " ");
-                    System.out.println("Max fringe size = " + fringeSize);
-                    for (SearchPathByAstar_Euclidean.Entry e : path) {
-                        System.out.print(e.toString() + " ");
-                    }
-                    return;
-                }
-                
+//                int fringeSize = astar.getMaxSizeOfFringe();
+//                int pathLength = path.size();
+//                if (fringeSize > maze.length && pathLength > 0) {
+//                    hardest = maze;
+//                    for (int i = 0; i < hardest.length; i++) {
+//                        for (int j = 0; j < hardest[0].length; j++) {
+//                            System.out.print(hardest[i][j] + " ");
+//                        }
+//                        System.out.println();
+//                    }
+//                    System.out.println("path length = " + pathLength + " ");
+//                    System.out.println("Max fringe size = " + fringeSize);
+//                    for (SearchPathByAstar_Euclidean.Entry e : path) {
+//                        System.out.print(e.toString() + " ");
+//                    }
+//                    return;
+//                }
+
                 System.out.print("path length = " + pathLength + " ");
-                System.out.println("epoch times: " + epoch++);
+                System.out.println("epoch times: " + epoch);
             }
+            epoch++;
         }
     }
 }
