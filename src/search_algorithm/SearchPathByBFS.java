@@ -19,6 +19,7 @@ public class SearchPathByBFS {
     //public int[][][] edgeTo;
     public int[][] distTo;
     public int maxSizeOfFringe;
+    public  Queue<Node> maxFringe;
     public int expandedNodesNumber;
 
     class Node {
@@ -84,7 +85,14 @@ public class SearchPathByBFS {
         maxSizeOfFringe = 1;//the start is in the fringe
 
         while(!fringe.isEmpty()) {
-            maxSizeOfFringe = Math.max(maxSizeOfFringe, fringe.size());
+           // maxSizeOfFringe = Math.max(maxSizeOfFringe, fringe.size());
+            if(maxSizeOfFringe < fringe.size()){
+                maxSizeOfFringe = fringe.size();
+                Queue<Node> temp = fringe;
+                maxFringe = temp;
+            }
+
+
             Node v = fringe.poll();
             //check whether the node is the goal node
             if( (v.x == end.x) && (v.y == end.y) ){
@@ -154,7 +162,7 @@ public class SearchPathByBFS {
     }
 
     public static void outputMaze(int[][] maze, Queue<Node> queue) {
-        File file = new File("src/data_visualization/BFS/bfs_maze_shortest.csv");
+        File file = new File("src/data_visualization/BFS1/bfs_maze_shortest.csv");
         BufferedWriter bw = null;
         // change path cell to 2
         while(!queue.isEmpty()){
@@ -187,6 +195,7 @@ public class SearchPathByBFS {
         }
     }
 
+
     public Queue<Node> getAdjacentNotmarkedNode(Node e, boolean[][] marked, int[][] maze) {
        Queue<Node> adj = new LinkedList<Node>();
         if (e.x - 1 >= 0 && marked[e.x - 1][e.y] == false && maze[e.x - 1][e.y] == 1) {  // go up
@@ -216,8 +225,7 @@ public class SearchPathByBFS {
             System.out.println();
         }
         System.out.println();
-
-       SearchPathByBFS bfs = new SearchPathByBFS(maze);
+        SearchPathByBFS bfs = new SearchPathByBFS(maze);
         Queue<Node> shortestPath = new LinkedList<Node>();
         Queue<Node> temp = new LinkedList<Node>();
 
