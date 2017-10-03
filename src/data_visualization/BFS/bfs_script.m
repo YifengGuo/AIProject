@@ -1,5 +1,5 @@
 clc;
-a = csvread('bfs_maze_shortest.csv');
+a = csvread('bfs_maze_shortest_Q10_iii).csv');
 [nx,ny] = size(a);
 a_copy = a;
 ind = find(a<1);
