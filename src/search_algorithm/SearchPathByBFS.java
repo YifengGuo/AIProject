@@ -162,7 +162,7 @@ public class SearchPathByBFS {
     }
 
     public static void outputMaze(int[][] maze, Queue<Node> queue) {
-        File file = new File("src/data_visualization/BFS1/bfs_maze_shortest.csv");
+        File file = new File("src/data_visualization/BFS/bfs_maze_shortest.csv");
         BufferedWriter bw = null;
         // change path cell to 2
         while(!queue.isEmpty()){
